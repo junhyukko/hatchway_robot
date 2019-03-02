@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Results from './Results'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state= {
+      robots: [],
+      loading: true,
+    }
+  }
+  componentDidMount(){
+    const robotApi = `https://www.hatchways.io/api/assessment/students`
+    console.log(robotApi);
+
+    fetch(robotApi).then(result=> {
+      console.log(result)
+      result.json().then(json => {
+        const robots = json
+        console.log(robots.students)
+
+        this.setState({
+          robots: robots.students,
+          loading: false,
+        })
+
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  }
   render() {
+    const { robots, loading } = this.state
+    if (loading === true) {
+      return (<h1> I'm loading the robots!</h1>)
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        HELLO Let me see the robots please..!
+        <Results robots = {robots}/>
       </div>
     );
   }
