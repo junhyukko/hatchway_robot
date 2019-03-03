@@ -57,8 +57,7 @@ class Robot extends React.Component {
               Skill: {skill}
               <br />
               <Average grades={grades} />
-              {this.state.visible ? <p> <Grade grades={grades}/></p> : null }
-
+              {this.state.visible ? <p> <Grade grades={grades} robots={this.props.robots} id={id}/></p> : null }
             </p>
           </div>
         </div>

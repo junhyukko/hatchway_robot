@@ -7,6 +7,7 @@ class Results extends React.Component {
       <h1>
         {robots.map(robot => {
           return <Robot
+            robots={robots}
             key={robot.id}
             pic= {robot.pic}
             firstName= {robot.firstName}
