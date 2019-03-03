@@ -10,48 +10,33 @@ class RobotContainer extends React.Component {
       filterValue: ""
     };
 
-    // this.handleFilterChange = this.handleFilterChange.bind(this);
-    this.updateSearch = this.updateSearch.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
-  // handleFilterChange(e) {
-  //   e.preventDefault();
-  //
-  //   const filterValue = e.target.value;
-  //   console.log(filterValue);
-  //   console.log(this.state.robots)
-  //   this.setState((prevState, props) => {
-  //     const filteredRobotList = props.robots.filter(robot => {
-  //       console.log(robot.firstName.toLocaleLowerCase().includes(filterValue))
-  //       robot.firstName
-  //         .toLocaleLowerCase()
-  //         .indexOf(filterValue.toLocaleLowerCase());
-  //     });
-  //     console.log(filteredRobotList)
-  //     return {
-  //       robots: filteredRobotList,
-  //       filterValue
-  //     };
-  //   });
-  // }
 
-  updateSearch(e){
-    this.setState({filterValue: e.target.value})
-    console.log(this.state.filterValue)
-
-    let filteredRobots = this.state.robots.filter(robot => {
-      return robot.firstName.toLocaleLowerCase().includes(this.state.filterValue.toLocaleLowerCase());
+  handleFilterChange(event) {
+    event.preventDefault()
+    const filterValue = event.target.value;
+    this.setState((prevState, props) => {
+      console.log(props)
+      // remove fruits that don't contain the filter value
+      const filteredRobots = props.robots.filter(robot =>
+        robot.firstName.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()));
+      // return new state with the filtered fruit list and the new value of the filter
+      return {
+        robots: filteredRobots,
+        filterValue
+      }
     })
-
-    this.setState({robots: filteredRobots})
-
   }
+
+
   render() {
     const { onChange } = this.props;
     return (
       <div>
         <RobotFilter
-          onChange={this.updateSearch}
+          onChange={this.handleFilterChange}
           value={this.state.filterValue}
         />
         <Results robots={this.state.robots} />
