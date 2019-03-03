@@ -5,7 +5,7 @@ class RobotFilter extends React.Component{
     return(
       <div>
         <label htmlFor="robot-filter"> </label>
-        <input type="text" value={this.props.value} onChange={this.props.onChange} name="robot-filter" />
+        <input type="text" placeholder="Search by name" value={this.props.value} onChange={this.props.onChange} name="robot-filter" />
       </div>
     )
   }

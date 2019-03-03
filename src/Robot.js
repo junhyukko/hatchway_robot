@@ -1,8 +1,30 @@
 import React from "react";
 import Average from "./Average";
 import "./Robot.css";
+import Grade from './Grade'
 
 class Robot extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.state={
+      visible: false,
+    }
+    this.acordion = this.acordion.bind(this)
+  }
+
+  acordion(e){
+    if(this.state.visible === false) {
+      this.setState((prevState, props) => ({
+        visible: true
+      }))
+    } else {
+      this.setState((prevState, props) => ({
+        visible: false
+      }))
+    }
+  }
+
   render() {
     const {
       city,
@@ -22,16 +44,26 @@ class Robot extends React.Component {
         </div>
         <div className="robot-content-component">
           <div className="first-last-name">
-            <h2>{firstName} {lastName}</h2>
+            <h2>
+              {firstName} {lastName}
+            </h2>
           </div>
           <div className="information">
             <p>
-              Email: {email}<br/>
-              Company: {company}<br/>
-              Skill: {skill}<br/>
+              Email: {email}
+              <br />
+              Company: {company}
+              <br />
+              Skill: {skill}
+              <br />
               <Average grades={grades} />
+              {this.state.visible ? <p> <Grade grades={grades}/></p> : null }
+
             </p>
           </div>
+        </div>
+        <div className="accordion-component">
+          <button className="accordion" onClick={this.acordion}>+</button>
         </div>
       </div>
     );
