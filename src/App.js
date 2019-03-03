@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Results from "./Results";
+import RobotContainer from "./RobotContainer";
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,10 @@ class App extends Component {
       robots: [],
       loading: true
     };
+
+  // this.handleFilterChange = this.handleFilterChange.bind(this)
   }
+
   componentDidMount() {
     const robotApi = `https://www.hatchways.io/api/assessment/students`;
     console.log(robotApi);
@@ -34,6 +38,15 @@ class App extends Component {
         });
     });
   }
+  //
+  // handleFilterChange(e) {
+  //   e.preventDefault()
+  //
+  //   const filterValue = e.target.value
+  //   this.setState((prevState, state) => {
+  //     console.log(state)
+  //   })
+  // }
 
   render() {
     const { robots, loading } = this.state;
@@ -43,7 +56,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <Results robots={robots} />
+          <RobotContainer robots={robots} />
+          {/* <Results robots={robots} /> */}
         </div>
       </div>
     );

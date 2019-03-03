@@ -6,7 +6,6 @@ class Results extends React.Component {
     return (
       <h1>
         {robots.map(robot => {
-          console.log("i should be 25");
           return <Robot
             key={robot.id}
             pic= {robot.pic}
