@@ -8,31 +8,59 @@ class RobotContainer extends React.Component {
     super(props);
     this.state = {
       robots: this.props.robots,
-      filterValue: ""
+      filterValue: "",
+      tagFilterValue: "",
+      tagrobots: this.props.robots
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleTagChange = this.handleTagChange.bind(this);
   }
 
-
   handleFilterChange(event) {
-    event.preventDefault()
+    event.preventDefault();
     const filterValue = event.target.value;
     this.setState((prevState, props) => {
-      console.log(props)
+      console.log(props);
 
-      const filteredRobots = props.robots.filter(robot =>
-        robot.firstName.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase()) ||
-        robot.lastName.toLocaleLowerCase().includes(filterValue.toLocaleLowerCase())
+      const filteredRobots = props.robots.filter(
+        robot =>
+          robot.firstName
+            .toLocaleLowerCase()
+            .includes(filterValue.toLocaleLowerCase()) ||
+          robot.lastName
+            .toLocaleLowerCase()
+            .includes(filterValue.toLocaleLowerCase())
       );
 
       return {
         robots: filteredRobots,
         filterValue
-      }
-    })
+      };
+    });
   }
 
+  handleTagChange(event) {
+    event.preventDefault();
+    const tagFilterValue = event.target.value;
+
+    this.setState((prevState, props) => {
+      console.log(props);
+
+      const tagfilteredRobots = props.robots.filter(robot =>
+        robot.tag
+          ? robot.tag
+              .toLocaleLowerCase()
+              .includes(tagFilterValue.toLocaleLowerCase())
+          : null
+      );
+
+      return {
+        robots: tagfilteredRobots,
+        tagFilterValue
+      };
+    });
+  }
 
   render() {
     const { onChange } = this.props;
@@ -43,12 +71,11 @@ class RobotContainer extends React.Component {
           value={this.state.filterValue}
         />
         <TagFilter
-          onChange={this.handleFilterChange}
-          value={this.state.filterValue}
+          tagChange={this.handleTagChange}
+          value={this.state.tagFilterValue}
         />
         <Results robots={this.state.robots} />
       </div>
-
     );
   }
 }

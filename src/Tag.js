@@ -36,7 +36,7 @@ class Tag extends React.Component {
     return (
       <div>
         <div>
-            {this.state.myrobot.tag ? <div>{this.state.myrobot.tag}</div> : null }
+            {this.state.myrobot.tag ? <div>tag:{this.state.myrobot.tag}</div> : null }
           <input
             type="text"
             placeholder="Add tag"
