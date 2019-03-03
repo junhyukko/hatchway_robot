@@ -11,8 +11,6 @@ class App extends Component {
       robots: [],
       loading: true
     };
-
-    // this.findAverage = this.findAverage.bind(this)
   }
   componentDidMount() {
     const robotApi = `https://www.hatchways.io/api/assessment/students`;
@@ -37,13 +35,6 @@ class App extends Component {
     });
   }
 
-  // findAverage(e, array){
-  //   e.preventDefault()
-  //   let sum;
-  //   array.reduce((previous, current) => current += previous)
-  //   return sum
-  // }
-
   render() {
     const { robots, loading } = this.state;
     if (loading === true) {
@@ -51,8 +42,9 @@ class App extends Component {
     }
     return (
       <div className="App">
-        HELLO Let me see the robots please..!
-        <Results robots={robots} />
+        <div className="container">
+          <Results robots={robots} />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,43 @@
+.robot-component {
+  border-bottom: 1px solid rgb(133, 133, 133, 0.3);
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.robot-image-component  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.robot-image-component img {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+.robot-content-component {
+  display: inline-block;
+  font-size: 20px;
+
+}
+
+.first-last-name h2 {
+  text-transform: uppercase;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin: 0;
+  vertical-align: baseline;
+
+}
+
+.information {
+  padding-left: 10px;
+  font-size: 12px;
+  color: rgb(167, 167, 167)
+}
