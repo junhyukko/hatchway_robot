@@ -113,12 +113,13 @@
   align-items: flex-start; */
 }
 .accordion-component h2{
-  /* background-color: whitesmoke; */
+  color: gray;
   margin: 0;
   padding-right: 20px;
+  transition: 0.5s;
 }
-.accordion:hover {
-  background-color: white;
+.accordion-component:hover .accordion{
+  color: black;
 }
 
 .grade {
