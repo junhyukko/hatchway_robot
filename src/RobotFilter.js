@@ -3,7 +3,7 @@ import React from "react";
 class RobotFilter extends React.Component {
   render() {
     return (
-      <div>
+      <div className="robot-filter">
         <label htmlFor="robot-filter"> </label>
         <input
           type="text"
