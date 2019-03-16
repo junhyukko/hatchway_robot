@@ -10,12 +10,22 @@ class RobotContainer extends React.Component {
       robots: this.props.robots,
       filterValue: "",
       tagFilterValue: "",
-      tagrobots: this.props.robots
+      tagrobots: this.props.robots,
+      // width: "",
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
   }
+
+  // componentDidMount = e => {
+  //   this.updateWindowDimensions()
+  //   window.addEventListener('resize', this.updateWindowDimensions)
+  // }
+  //
+  // updateWindowDimensions = () => {
+  //   this.setState({ width: window.innerWidth })
+  // }
 
   handleFilterChange(event) {
     event.preventDefault();
@@ -63,18 +73,28 @@ class RobotContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state.width)
     const { onChange } = this.props;
     return (
-      <div>
-        <RobotFilter
-          onChange={this.handleFilterChange}
-          value={this.state.filterValue}
-        />
-        <TagFilter
-          tagChange={this.handleTagChange}
-          value={this.state.tagFilterValue}
-        />
-        <Results robots={this.state.robots} />
+      <div className="robot-container">
+
+          <div className="filter">
+            <div className="filters">
+              <RobotFilter
+                onChange={this.handleFilterChange}
+                value={this.state.filterValue}
+              />
+
+              <TagFilter
+                tagChange={this.handleTagChange}
+                value={this.state.tagFilterValue}
+              />
+            </div>
+          </div>
+
+        <div className="results">
+          <Results robots={this.state.robots} />
+        </div>
       </div>
     );
   }

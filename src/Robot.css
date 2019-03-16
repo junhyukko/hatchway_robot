@@ -1,11 +1,64 @@
+.robot-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 25px;
+  background-color: white;
+  z-index: 2;
+
+}
+
+/*ROBOT FILTER, use a white background on robot container to cover up search*/
+
+.filter {
+  position: fixed;
+  height: 100px;
+  width: 745px;
+  background-color: white;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.results {
+  margin-top: 90px;
+  z-index: 1;
+}
+
+.robot-filter input {
+  width: 97%;
+  padding: 20px 20px 5px 10px;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid rgb(198, 198, 198);
+}
+
+.robot-filter input::placeholder   {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+}
+
+/*ROBOT CONTAINER (GRID)*/
 .robot-component {
   border-bottom: 1px solid rgb(133, 133, 133, 0.3);
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   position: relative;
+  width: 100%;
 }
 
+/* .robot-container {
+  width: 100%;
+} */
+
+/*ROBOT IMAGE CONTAINER*/
 .robot-image-component {
   display: flex;
   justify-content: center;
@@ -15,13 +68,14 @@
 }
 .robot-image-component img {
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid rgb(198, 198, 198);
   border-radius: 50%;
   width: 100px;
   height: 100px;
   margin: 10px;
 }
 
+/*ROBOT CONTENT CONTAINER*/
 .robot-content-component {
   display: inline-block;
   font-size: 20px;
@@ -33,12 +87,19 @@
   grid-column-end: 2;
   margin: 0;
   vertical-align: baseline;
+  padding: 10px 0 0 0;
 }
 
-.information {
-  padding-left: 10px;
-  font-size: 12px;
-  color: rgb(167, 167, 167);
+.robot-component .information {
+  padding: 5px 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+.information p {
+  padding: 2px;
+  margin: 0;
+  font-size: 15px;
+  color: rgb(55, 55, 55);
 }
 
 /*ROBOT ACCORDION*/
@@ -65,25 +126,6 @@
   padding-left: 20px;
 }
 
-/*ROBOT FILTER*/
-
-.robot-filter {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.robot-filter input {
-  width: 97%;
-  padding: 20px 20px 5px 10px;
-  margin: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  border-bottom: 1px solid rgb(198, 198, 198);
-}
-
-.robot-filter input::placeholder   {
-  font-family: 'Raleway', sans-serif;
-  font-size: 20px;
-}
+/* .results {
+  padding-top: 50px;
+} */
