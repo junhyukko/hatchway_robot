@@ -38,15 +38,6 @@ class App extends Component {
         });
     });
   }
-  //
-  // handleFilterChange(e) {
-  //   e.preventDefault()
-  //
-  //   const filterValue = e.target.value
-  //   this.setState((prevState, state) => {
-  //     console.log(state)
-  //   })
-  // }
 
   render() {
     const { robots, loading } = this.state;

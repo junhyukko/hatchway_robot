@@ -8,7 +8,7 @@ class Grade extends React.Component {
         {this.props.grades.map((grade, id) => {
           return (
             <div key={this.props.id}>
-              Test {id + 1} <div className="grade">{grade}%</div>
+              Test {id + 1}: <div className="grade">{grade}%</div>
             </div>
           );
         })}
