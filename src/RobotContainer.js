@@ -7,9 +7,9 @@ class RobotContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      robots: this.props.robots,
       filterValue: "",
-      tagFilterValue: "",
-      tagrobots: this.props.robots
+      tagFilterValue: ""
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -29,6 +29,9 @@ class RobotContainer extends React.Component {
             .includes(filterValue.toLocaleLowerCase()) ||
           robot.lastName
             .toLocaleLowerCase()
+            .includes(filterValue.toLocaleLowerCase()) ||
+          `${robot.firstName} ${robot.lastName}`
+            .toLocaleLowerCase()
             .includes(filterValue.toLocaleLowerCase())
       );
 
@@ -42,15 +45,18 @@ class RobotContainer extends React.Component {
   handleTagChange(event) {
     event.preventDefault();
     const tagFilterValue = event.target.value;
+    console.log(tagFilterValue);
 
     this.setState((prevState, props) => {
       console.log(props);
 
       const tagfilteredRobots = props.robots.filter(robot =>
-        robot.tag
-          ? robot.tag
-              .toLocaleLowerCase()
-              .includes(tagFilterValue.toLocaleLowerCase())
+        robot.tags
+          ? robot.tags.filter(tag =>
+              tag
+                .toLocaleLowerCase()
+                .includes(tagFilterValue.toLocaleLowerCase())
+            )
           : null
       );
 
@@ -74,14 +80,14 @@ class RobotContainer extends React.Component {
 
             <TagFilter
               tagChange={this.handleTagChange}
-              value={this.state.tagFilterValue}
+              tagValue={this.state.tagFilterValue}
             />
           </div>
         </div>
 
         <div className="results">
           <Results
-            robots={this.props.robots}
+            robots={this.state.robots}
             tags={this.props.tags}
             tag={this.props.tag}
             textValue={this.props.textValue}
