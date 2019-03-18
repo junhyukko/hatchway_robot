@@ -7,25 +7,14 @@ class RobotContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      robots: this.props.robots,
       filterValue: "",
       tagFilterValue: "",
-      tagrobots: this.props.robots,
-      // width: "",
+      tagrobots: this.props.robots
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
   }
-
-  // componentDidMount = e => {
-  //   this.updateWindowDimensions()
-  //   window.addEventListener('resize', this.updateWindowDimensions)
-  // }
-  //
-  // updateWindowDimensions = () => {
-  //   this.setState({ width: window.innerWidth })
-  // }
 
   handleFilterChange(event) {
     event.preventDefault();
@@ -73,27 +62,33 @@ class RobotContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state.width)
     const { onChange } = this.props;
     return (
       <div className="robot-container">
+        <div className="filter">
+          <div className="filters">
+            <RobotFilter
+              onChange={this.handleFilterChange}
+              value={this.state.filterValue}
+            />
 
-          <div className="filter">
-            <div className="filters">
-              <RobotFilter
-                onChange={this.handleFilterChange}
-                value={this.state.filterValue}
-              />
-
-              <TagFilter
-                tagChange={this.handleTagChange}
-                value={this.state.tagFilterValue}
-              />
-            </div>
+            <TagFilter
+              tagChange={this.handleTagChange}
+              value={this.state.tagFilterValue}
+            />
           </div>
+        </div>
 
         <div className="results">
-          <Results robots={this.state.robots} />
+          <Results
+            robots={this.props.robots}
+            tags={this.props.tags}
+            tag={this.props.tag}
+            textValue={this.props.textValue}
+            handleKeyUp={this.props.handleKeyUp}
+            addTag={this.props.addTag}
+            handleTagFilter={this.props.handleTagFilter}
+          />
         </div>
       </div>
     );

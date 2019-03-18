@@ -52,15 +52,26 @@ class Robot extends React.Component {
             <p>Email: {email}</p>
             <p>Company: {company}</p>
             <p>Skill: {skill}</p>
-            <p>
+            <div>
               <Average grades={grades} />
               {this.state.visible ? (
-                <p>
+                <div>
                   {" "}
-                  <Grade grades={grades} robots={this.props.robots} id={id} />
-                </p>
+                  <Grade
+                    grades={grades}
+                    robots={this.props.robots}
+                    robotTags={this.props.robotTags}
+                    id={id}
+                    tags={this.props.tags}
+                    tag={this.props.tag}
+                    handleKeyUp={this.props.handleKeyUp}
+                    addTag={this.props.addTag}
+                    handleTagFilter={this.props.handleTagFilter}
+                    textValue={this.props.textValue}
+                  />
+                </div>
               ) : null}
-            </p>
+            </div>
           </div>
         </div>
         <div className="accordion-component">
