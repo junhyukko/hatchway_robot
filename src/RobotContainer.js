@@ -46,16 +46,23 @@ class RobotContainer extends React.Component {
     event.preventDefault();
     const tagFilterValue = event.target.value;
     console.log(tagFilterValue);
-
+    const tagFilterValueSet = new Set(tagFilterValue)
     this.setState((prevState, props) => {
       console.log(props);
 
 
-      const tagfilteredRobots = props.robots.filter(robot =>
-        robot.tags.find(tag =>
-          tag.toLocaleLowerCase().includes(tagFilterValue.toLocaleLowerCase())
-        )
-      );
+      const tagfilteredRobots = props.robots.filter(
+        robot =>
+        tagFilterValue === "" ? robot :
+         robot.tags.find(obj => obj.includes(tagFilterValue))
+      )
+      console.log(tagfilteredRobots)
+      console.log(tagFilterValue === "");
+      // const tagfilteredRobots = props.robots.filter(robot =>
+      //   robot.tags.find(tag =>
+      //     tag.toLocaleLowerCase().includes(tagFilterValue.toLocaleLowerCase())
+      //   )
+      // );
 
       return {
         robots: tagfilteredRobots,
