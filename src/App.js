@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     const { robots, loading } = this.state;
     if (loading === true) {
-      return <h1> I'm loading the robots!</h1>;
+      return <h1> Beep Boop.. loading all robots!</h1>;
     }
     return (
       <div className="App">
