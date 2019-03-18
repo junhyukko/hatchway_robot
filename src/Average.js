@@ -17,7 +17,7 @@ class Average extends React.Component {
     const { grades } = this.props;
     return (
       <div>
-         Average: {this.getAvg(grades)}%
+         <p>Average: {this.getAvg(grades)}%</p>
       </div>
     );
   }

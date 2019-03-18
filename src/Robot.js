@@ -76,13 +76,17 @@ class Robot extends React.Component {
         </div>
         <div className="accordion-component">
           {this.state.visible === false ? (
-            <h2 className="accordion" onClick={this.acordion}>
-              +
-            </h2>
+            <a href="#">
+              <h2 className="accordion" onClick={this.acordion}>
+                +
+              </h2>
+            </a>
           ) : (
-            <h2 className="accordion" onClick={this.acordion}>
-              -
-            </h2>
+            <a href="#">
+              <h2 className="accordion" onClick={this.acordion}>
+                -
+              </h2>
+            </a>
           )}
         </div>
       </div>
