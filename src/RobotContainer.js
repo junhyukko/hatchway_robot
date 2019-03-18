@@ -50,14 +50,11 @@ class RobotContainer extends React.Component {
     this.setState((prevState, props) => {
       console.log(props);
 
+
       const tagfilteredRobots = props.robots.filter(robot =>
-        robot.tags
-          ? robot.tags.filter(tag =>
-              tag
-                .toLocaleLowerCase()
-                .includes(tagFilterValue.toLocaleLowerCase())
-            )
-          : null
+        robot.tags.find(tag =>
+          tag.toLocaleLowerCase().includes(tagFilterValue.toLocaleLowerCase())
+        )
       );
 
       return {
@@ -68,6 +65,7 @@ class RobotContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.robots);
     const { onChange } = this.props;
     return (
       <div className="robot-container">

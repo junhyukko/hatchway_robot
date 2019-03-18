@@ -3,9 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Results from "./Results";
 import RobotContainer from "./RobotContainer";
-const ENTER_KEY = 13;
-const COMMA_KEY = 188;
-const BACKSPACE_KEY = 8;
+
 
 class App extends Component {
   constructor(props) {
@@ -31,9 +29,11 @@ class App extends Component {
         .then(json => {
           const robots = json;
           console.log(robots.students);
-
+          const robotsArray = robots.students.map(robot => {robot.tags = []; return robot})
+          console.log(robotsArray)
           this.setState({
-            robots: robots.students,
+            robots: robotsArray,
+            // robots: robots.students,
             loading: false
           });
         })
@@ -45,10 +45,10 @@ class App extends Component {
 
   handleKeyUp = e => {
     e.preventDefault();
-    const inputText = e.target.value
+    const ENTER_KEY = 13;
     const robotId = e.target.id;
     const key = e.keyCode;
-    if (key === ENTER_KEY || key === COMMA_KEY) {
+    if (key === ENTER_KEY) {
       this.addTag(robotId);
     }
   };
